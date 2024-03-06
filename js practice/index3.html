@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Интерфейсные события</title>
+        <style>
+            #myElement {
+                width: 200px;
+                height: 200px;
+                padding: 10px;
+                text-align: center;
+                border: 2px solid black;
+                background-color: lightgray;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Интерфейсные события</h1>
+
+        <h2>1. События мыши:</h2>
+        <div
+            id="myMouseElement"
+            onmouseover="mouseOverFunction()"
+            onmouseout="mouseOutFunction()"
+            onclick="mouseClickFunction()"
+        >
+            Наведите курсор мыши на этот элемент
+        </div>
+
+        <h2>2. События клавиатуры:</h2>
+        <input
+            type="text"
+            id="myInput"
+            onkeydown="keyDownFunction(event)"
+            onkeyup="keyUpFunction(event)"
+        />
+        <p id="keyboardEvent"></p>
+
+        <h2>3. Drag&DROP события:</h2>
+        <div
+            id="dragElement"
+            draggable="true"
+            ondragstart="dragStartFunction(event)"
+        >
+            Перетащите этот элемент
+        </div>
+        <div
+            id="dropElement"
+            ondragover="dragOverFunction(event)"
+            ondrop="dropFunction(event)"
+        >
+            Сбросьте элемент сюда
+        </div>
+
+        <h2>4. События указателя:</h2>
+        <div
+            id="pointerElement"
+            onpointerdown="pointerDownFunction(event)"
+            onpointerup="pointerUpFunction(event)"
+        >
+            Нажмите и отпустите этот элемент
+        </div>
+
+        <h2>5. События полосы прокрутки:</h2>
+        <div
+            style="height: 300px; width: 50px; overflow: scroll"
+            onscroll="scrollFunction()"
+        >
+            Прокрутите этот блок
+        </div>
+
+        <h2>6. События сенсорных экранов:</h2>
+        <div
+            id="touchElement"
+            ontouchstart="touchStartFunction(event)"
+            ontouchend="touchEndFunction(event)"
+        >
+            Нажмите и отпустите этот элемент
+        </div>
+
+        <script>
+            function mouseOverFunction() {
+                document.getElementById(
+                    "myMouseElement"
+                ).style.backgroundColor = "yellow";
+            }
+
+            function mouseOutFunction() {
+                document.getElementById(
+                    "myMouseElement"
+                ).style.backgroundColor = "lightgray";
+            }
+
+            function mouseClickFunction() {
+                alert("Клик мыши!");
+            }
+
+            function keyDownFunction(event) {
+                document.getElementById("keyboardEvent").innerHTML =
+                    "Нажата клавиша: " + event.key;
+            }
+
+            function keyUpFunction(event) {
+                document.getElementById("keyboardEvent").innerHTML = "";
+            }
+
+            function dragStartFunction(event) {
+                event.dataTransfer.setData("text", event.target.id);
+            }
+
+            function dragOverFunction(event) {
+                event.preventDefault();
+            }
+
+            function dropFunction(event) {
+                event.preventDefault();
+                var data = event.dataTransfer.getData("text");
+                event.target.appendChild(document.getElementById(data));
+            }
+
+            function pointerDownFunction(event) {
+                document.getElementById(
+                    "pointerElement"
+                ).style.backgroundColor = "green";
+            }
+
+            function pointerUpFunction(event) {
+                document.getElementById(
+                    "pointerElement"
+                ).style.backgroundColor = "lightgray";
+            }
+
+            function scrollFunction() {
+                alert("Прокручено!");
+            }
+
+            function touchStartFunction(event) {
+                document.getElementById("touchElement").style.backgroundColor =
+                    "blue";
+            }
+
+            function touchEndFunction(event) {
+                document.getElementById("touchElement").style.backgroundColor =
+                    "lightgray";
+            }
+        </script>
+    </body>
+</html>

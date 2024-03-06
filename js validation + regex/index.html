@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Форма с валидацией через JS</title>
+    </head>
+    <body>
+        <h2>Форма с валидацией через JS</h2>
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" />
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" />
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" />
+
+            <button type="submit" onclick="validateForm(event)">
+                Отправить
+            </button>
+        </form>
+
+        <script>
+            function validateForm(event) {
+                event.preventDefault(); // Отменить отправку формы
+
+                // Получаем значения полей
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+
+                // Проверка на пустое значение
+                if (name === "" || email === "" || password === "") {
+                    alert("Введите все значения");
+                    return;
+                }
+
+                // Проверка формата email
+                var emailRegex = /S+@S+\.S+/;
+                if (!emailRegex.test(email)) {
+                    alert("Неверный формат email");
+                    return;
+                }
+
+                // Проверка наличия определенных символов в пароле
+                var invalidCharsRegex = /[^A-Za-z0-9]/;
+                if (invalidCharsRegex.test(password)) {
+                    alert("Пароль содержит недопустимые символы");
+                    return;
+                }
+
+                // Валидация успешна
+                alert("Форма успешно заполнена");
+            }
+        </script>
+    </body>
+</html>

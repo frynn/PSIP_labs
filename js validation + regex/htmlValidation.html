@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Форма с валидацией через атрибуты HTML5</title>
+        <style type="text/css">
+            div {
+                width: 300px;
+            }
+            input {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Форма с валидацией через атрибуты HTML5</h2>
+        <form
+            style="
+                display: flex;
+                flex-direction: column;
+                width: max-content;
+                gap: 15px;
+            "
+        >
+            <div>
+                <label for="name">Имя:</label>
+                <input type="text" id="name" required />
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+            </div>
+            <div>
+                <label for="password">Пароль:</label>
+                <input
+                    type="password"
+                    id="password"
+                    pattern=".{8,}"
+                    title="Пароль должен содержать минимум 8 символов"
+                    required
+                />
+            </div>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </body>
+</html>

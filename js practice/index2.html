@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script type="text/javascript">
+            function go() {
+                document.location.assign("https://youtube.com");
+            }
+        </script>
+        <script type="text/javascript">
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                // добавить нуль перед числами <10
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById("dateTime").innerHTML =
+                    h + ":" + m + ":" + s;
+                t = setTimeout("startTime()", 500);
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+        </script>
+        <style type="text/css">
+            #block {
+                height: 360px;
+                width: auto;
+                border: 2px dotted #f00;
+            }
+            p {
+                text-indent: 40px;
+                padding-left: 20px;
+            }
+            .green-text {
+                color: green;
+            }
+
+            .red-text {
+                color: red;
+            }
+
+            .green-border {
+                border: 1px solid green;
+            }
+
+            .red-border {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body onclick="dispMes(event)" onload="startTime()">
+        <!-- Example 1 -->
+        <input
+            type="button"
+            value="Перейти на главную страницу youtube"
+            onclick="go()"
+        />
+        <!-- Example 2 -->
+        <div id="block">
+            <p>Щелкните в любом месте правого окна редактора.</p>
+            <p id="par" style="display: none">
+                Щелчок мыши был произведен по координатам:
+                <b><span id="resultx"> </span></b> пикс. по горизонтали от левой
+                границы окна и <br />
+                <b><span id="resulty"> </span></b> пикс. по вертикали от верхней
+                границы окна.
+            </p>
+        </div>
+        <script type="text/javascript">
+            function dispMes(event) {
+                document.getElementById("par").style.display = "block";
+                document.getElementById("resultx").innerHTML = event.clientX;
+                document.getElementById("resulty").innerHTML = event.clientY;
+            }
+        </script>
+        <!-- Example 3 -->
+        <p id="par3" onmouseover="start()" onmouseout="stop()">
+            Наведите на меня курсор мыши.
+        </p>
+        <script type="text/javascript">
+            function start() {
+                document.getElementById("par3").style.color = "red";
+            }
+            function stop() {
+                document.getElementById("par3").style.color = "black";
+            }
+        </script>
+        <!-- Example DIY -->
+        <p id="par1">Абзац 1</p>
+        <p id="par2">Абзац 2</p>
+
+        <button id="but1">Изменить цвет на зеленый</button>
+        <button id="but2">Изменить цвет на красный</button>
+        <button id="but3">Добавить зеленую границу</button>
+        <button id="but4">Добавить красную границу</button>
+
+        <script>
+            // Отображение окна оповещения при загрузке документа
+            window.onload = function () {
+                alert("Добро пожаловать в задание 1");
+            };
+
+            // Отображение окна оповещения при закрытии документа
+            window.onbeforeunload = function () {
+                return "Вы покидаете задание 1";
+            };
+
+            var par1 = document.getElementById("par1");
+            var par2 = document.getElementById("par2");
+
+            var but1 = document.getElementById("but1");
+            var but2 = document.getElementById("but2");
+            var but3 = document.getElementById("but3");
+            var but4 = document.getElementById("but4");
+
+            but1.addEventListener("click", function () {
+                par1.classList.add("green-text");
+            });
+
+            but2.addEventListener("dblclick", function () {
+                par2.classList.add("red-text");
+            });
+
+            par1.addEventListener("mouseover", function () {
+                par1.style.color = "";
+            });
+
+            par2.addEventListener("mouseover", function () {
+                par2.style.color = "";
+            });
+
+            but3.addEventListener("click", function () {
+                par1.classList.add("green-border");
+                par2.classList.add("green-border");
+            });
+
+            but4.addEventListener("dblclick", function () {
+                par1.classList.add("red-border");
+                par2.classList.add("red-border");
+            });
+        </script>
+        <!-- Example 4 -->
+        <script type="text/javascript">
+            function timeMsg() {
+                var t = setTimeout("alertMsg()", 3000);
+            }
+            function alertMsg() {
+                alert("Привет");
+            }
+        </script>
+        <form>
+            <input
+                type="button"
+                value="Показать сигнальное окно через 3 секунды"
+                onClick="timeMsg()"
+            />
+        </form>
+        <!-- Example 5-6 -->
+        <script type="text/javascript">
+            var c = 0;
+            var t;
+            var timer_is_on = 0;
+
+            function timedCount() {
+                document.getElementById("txt").value = c;
+                c = c + 1;
+                t = setTimeout("timedCount()", 1000);
+            }
+
+            function doTimer() {
+                if (!timer_is_on) {
+                    timer_is_on = 1;
+                    timedCount();
+                }
+            }
+            function stopTimer() {
+                clearTimeout(t);
+                timer_is_on = 0;
+            }
+        </script>
+        <form>
+            <input type="button" value="Начать отсчет!" onClick="doTimer()" />
+            <input type="text" id="txt" />
+            <input
+                type="button"
+                value="Остановить отсчет!"
+                onclick="stopTimer()"
+            />
+        </form>
+        <p>
+            Щелкните на кнопке выше. Поле ввода начнет отсчет до бесконечности,
+            начиная с 0.
+        </p>
+        <!-- Example 7 -->
+
+        <div id="dateTime"></div>
+    </body>
+</html>

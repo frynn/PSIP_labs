@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body onclick="alert('сюда всплытие не дойдёт')">
+        <!-- Example 1 -->
+        <input value="Нажми меня" onclick="alert('Click!')" type="button" />
+        <!-- Example 2 -->
+        <script>
+            function countRabbits() {
+                for (var i = 1; i <= 3; i++) {
+                    alert("Rabbit number: " + i);
+                }
+            }
+        </script>
+        <input type="button" onclick="countRabbits()" value="Count rabbits" />
+        <!-- Example 3 -->
+        <input id="elem" type="button" value="Нажми меня!" />
+        <script>
+            elem.onclick = function () {
+                alert("Thanks!");
+            };
+        </script>
+        <!-- Example 4 -->
+        <button onclick="alert(this.innerHTML)">Tap on me</button>
+        <!-- Example 5 -->
+        <input id="elem" type="button" value="Нажми меня" />
+        <script>
+            function handler1() {
+                alert("Thanks!");
+            }
+            function handler2() {
+                alert("Thanks a lot!");
+            }
+            function handler() {
+                alert("Спасибо!");
+            }
+            elem.onclick = () => alert("Hello!");
+            input.addEventListener("click", handler);
+            elem.addEventListener("click", handler1);
+            elem.addEventListener("click", handler2);
+            input.removeEventListener("click", handler);
+        </script>
+        <button onclick="event.stopPropagation()">Кликни меня</button>
+
+        <style>
+            body * {
+                margin: 10px;
+                border: 1px solid blue;
+            }
+        </style>
+
+        <form onclick="alert('form')">
+            FORM
+            <div onclick="alert('div')">
+                DIV
+                <p onclick="alert('p')">P</p>
+            </div>
+        </form>
+    </body>
+</html>

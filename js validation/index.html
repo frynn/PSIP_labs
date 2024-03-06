@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 50%;
+                height: 90%;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <label for="text">Text input</label>
+            <input type="text" id="text" />
+            <label for="pass">Password input</label>
+            <input type="password" id="pass" />
+            <label for="area">Textarea input</label>
+            <textarea name="area" id="area" cols="30" rows="10"></textarea>
+            <label for="radio">Radio button</label>
+            <div>
+                <input type="radio" name="radios" id="radio1" />
+                <input type="radio" name="radios" id="radio2" />
+                <input type="radio" name="radios" id="radio3" />
+            </div>
+
+            <label for="check">Checkbox</label>
+            <div>
+                <input type="checkbox" name="checkboxes" value="check1" />
+                <input type="checkbox" name="checkboxes" value="check2" />
+                <input type="checkbox" name="checkboxes" value="check3" />
+            </div>
+            <label for="select">Select</label>
+            <select id="select">
+                <option value="Option 1" selected>Опция 1</option>
+                <option value="Option 2">Опция 2</option>
+            </select>
+            <label for="res">Reset button</label>
+            <input type="reset" id="res" />
+            <label for="btn">Button input</label>
+            <input type="button" id="btn" onclick="getEl()" />
+            <label for="subm">Submit input</label>
+            <input type="submit" id="subm" />
+        </form>
+        <script>
+            const text = document.getElementById("text");
+            const pass = document.getElementById("pass");
+            const area = document.getElementById("area");
+            const radio = document.querySelectorAll('input[name="radios"]');
+            const check = document.querySelectorAll('input[name="checkboxes"]');
+            const select = document.getElementById("select");
+            function getEl() {
+                let selectedValue = "";
+
+                console.log(selectedValue);
+                let allInputs = {
+                    text: text.value,
+                    pass: pass.value,
+                    area: area.value,
+                    select: select.value,
+                };
+                for (var i = 0; i < check.length; i++) {
+                    allInputs[check[i].value] = check[i].checked;
+                }
+                for (var i = 0; i < radio.length; i++) {
+                    if (radio[i].checked) {
+                        allInputs[radio[i]] = radio[i].id;
+                        break;
+                    }
+                }
+
+                alert(Object.values(allInputs));
+            }
+        </script>
+    </body>
+</html>

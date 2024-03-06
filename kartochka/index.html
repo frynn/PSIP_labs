@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form id="registration-form">
+            <span>Форма регистрации</span>
+            <div>
+                <p>Name</p>
+                <input type="text" name="name" id="name" />
+            </div>
+            <div>
+                <p>e-mail</p>
+                <input type="email" name="email" id="mail" />
+            </div>
+            <div>
+                <p>Password</p>
+                <input type="password" name="password" id="pass" required />
+            </div>
+            <div>
+                <p>Repeat password</p>
+                <input
+                    type="password"
+                    name="repeatPassword"
+                    id="rep_pass"
+                    required
+                />
+            </div>
+            <div>
+                <p>Gender</p>
+                <label for="maleRadio">Мужчина</label>
+                <input type="radio" name="gender" value="male" id="maleRadio" />
+                <label for="femaleRadio">Женщина</label>
+                <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    id="femaleRadio"
+                />
+            </div>
+            <div>
+                <p>Увлечения</p>
+                <select id="hobbies" multiple>
+                    <option value="pc">компьютеры</option>
+                    <option value="sport">спорт</option>
+                    <option value="games">игры</option>
+                    <option value="cars">автомобили</option>
+                    <option value="music">музыка</option>
+                </select>
+            </div>
+            <div>
+                <p>Ваши пожелания</p>
+                <textarea id="wishes"></textarea>
+            </div>
+            <div>
+                <button type="submit" id="submit-btn">Send</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <script src="script.js"></script>
+    </body>
+</html>
